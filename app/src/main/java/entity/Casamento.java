@@ -117,17 +117,19 @@ public class Casamento {
       //  this.convidados = convidados;
     //}
 
+
     @Override
     public String toString() {
         return "Casamento{" +
-                "noiva='" + noiva + '\'' +
+                "id=" + id +
+                ", noiva='" + noiva + '\'' +
                 ", noivo='" + noivo + '\'' +
                 ", dia=" + dia +
                 ", mes=" + mes +
                 ", ano=" + ano +
                 ", cidade='" + cidade + '\'' +
                 ", local='" + local + '\'' +
-                //", convidados=" + convidados +
+//                ", usuarios=" + usuarios +
                 '}';
     }
 }
