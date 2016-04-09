@@ -41,6 +41,12 @@ public class LoginActivity extends AppCompatActivity {
             List<Usuario> retorno = db.selectUsuario();
             for(Usuario u : retorno){
                 Log.i("ayty",u.toString());
+                Casamento c = u.getCasamento();
+                List<Casamento> byId = db.selectCasamentoById(c.getId());
+                for(Casamento cc : byId){
+                    Log.i("ayty","Aquiii: "+cc.toString());
+                }
+
 
             }
         } catch (SQLException e) {

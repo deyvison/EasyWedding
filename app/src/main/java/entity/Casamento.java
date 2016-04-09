@@ -53,6 +53,14 @@ public class Casamento {
         this.noivo = noivo;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNoiva() {
         return noiva;
     }

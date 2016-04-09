@@ -18,7 +18,7 @@ public class Usuario {
     @DatabaseField
     private String senha;
 
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, foreignAutoRefresh=true)
     private Casamento casamento;
 
     public Usuario(){}
