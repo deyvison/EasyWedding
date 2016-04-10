@@ -108,4 +108,12 @@ public class DB {
         List<Usuario> usuarios = usuarioDAO.query(preparedQuery);//SELECT ESPECÍFICO
         return usuarios;
     }
+
+    public List<Usuario> selectUsuarioByLogin(String login) throws SQLException {
+        QueryBuilder<Usuario, Integer> builder = usuarioDAO.queryBuilder();//INSTANCIAÇÃO DO CONSTRUTOR DA QUERY
+        builder.where().eq("login", login);
+        PreparedQuery<Usuario> preparedQuery = builder.prepare();//
+        List<Usuario> user = usuarioDAO.query(preparedQuery);
+        return user;
+    }
 }

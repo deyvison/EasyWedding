@@ -5,6 +5,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -39,10 +40,12 @@ public class Casamento {
     private String local;
 
     @ForeignCollectionField
-    private Collection<Usuario> usuarios;
+    private Collection<Usuario> usuario;
 
     //@ForeignCollectionField
     //private Collection<Convidado> convidados;
+    @ForeignCollectionField
+    private Collection<Convidado> convidados;
 
 
 
@@ -51,6 +54,8 @@ public class Casamento {
     public Casamento(String noiva, String noivo) {
         this.noiva = noiva;
         this.noivo = noivo;
+        this.convidados = new ArrayList<Convidado>();
+        this.usuario = new ArrayList<Usuario>();
     }
 
     public int getId() {
@@ -117,14 +122,17 @@ public class Casamento {
         this.local = local;
     }
 
-  //  public Collection<Convidado> getConvidados() {
-      //  return convidados;
-    //}
+    public void addConvidado(Convidado c){
+        this.convidados.add(c);
+    }
 
-    //public void setConvidados(List<Convidado> convidados) {
-      //  this.convidados = convidados;
-    //}
+    public Collection<Convidado> getConvidados() {
+        return convidados;
+    }
 
+    public void setConvidados(Collection<Convidado> convidados) {
+        this.convidados = convidados;
+    }
 
     @Override
     public String toString() {
@@ -137,7 +145,19 @@ public class Casamento {
                 ", ano=" + ano +
                 ", cidade='" + cidade + '\'' +
                 ", local='" + local + '\'' +
-//                ", usuarios=" + usuarios +
+                ", convidados=" + convidados +
                 '}';
+    }
+
+    public Collection<Usuario> getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Collection<Usuario> usuario) {
+        this.usuario = usuario;
+    }
+
+    public void addUsuario(Usuario user) {
+        this.usuario.add(user);
     }
 }
