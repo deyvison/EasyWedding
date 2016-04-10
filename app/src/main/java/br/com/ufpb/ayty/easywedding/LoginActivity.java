@@ -62,9 +62,9 @@ public class LoginActivity extends AppCompatActivity {
             convidado2.setCasamento(c);
             convidado3.setCasamento(c);
 
-            //db.insertConvidado(convidado1);
-            //db.insertConvidado(convidado2);
-            //db.insertConvidado(convidado3);
+            db.insertConvidado(convidado1);
+            db.insertConvidado(convidado2);
+            db.insertConvidado(convidado3);
 
             db.insertCasamento(c);
             db.insertUsuario(user);
