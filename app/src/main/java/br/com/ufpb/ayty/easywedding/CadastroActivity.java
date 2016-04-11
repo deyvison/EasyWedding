@@ -1,5 +1,6 @@
 package br.com.ufpb.ayty.easywedding;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -57,8 +58,6 @@ public class CadastroActivity extends AppCompatActivity {
 
                 if (validarUsuario(valorLogin)) {
 
-                    Log.i("ayty", "usuário inexistente!");
-
                     Casamento c = new Casamento(valorNoiva, valorNoivo);
                     db.insertCasamento(c);
 
@@ -67,10 +66,11 @@ public class CadastroActivity extends AppCompatActivity {
                     db.insertUsuario(user);
                     Toast.makeText(this, "Usuário Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
                     // criar a intent para o main activity
+                    Intent i = new Intent(this, MainActivity.class);
+                    startActivity(i);
+                    finish();
                 } else {
                     Toast.makeText(this,"Usuário já existe!",Toast.LENGTH_SHORT).show();
-                    Log.i("ayty", "usuário já existeeeee!");
-
                 }
             }
         } catch (SQLException e) {

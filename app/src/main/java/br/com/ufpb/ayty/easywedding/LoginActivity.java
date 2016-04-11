@@ -63,6 +63,10 @@ public class LoginActivity extends AppCompatActivity {
                                 if(user.getLogin().equals(campoLogin.getText().toString()) && user.getSenha().equals(campoSenha.getText().toString())){
                                     Toast.makeText(v.getContext(),"Usuário logado com sucesso!", Toast.LENGTH_SHORT).show();
                                     // criar a intent para a main activity
+                                    Intent i = new Intent(v.getContext(),MainActivity.class);
+
+                                    // criar o bundle para passar as informações
+                                    startActivity(i);
                                 }else{
                                     Toast.makeText(v.getContext(),"Usuário ou senha inválidos!",Toast.LENGTH_SHORT).show();
                                 }
