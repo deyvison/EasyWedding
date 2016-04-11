@@ -42,12 +42,8 @@ public class Casamento {
     @ForeignCollectionField
     private Collection<Usuario> usuario;
 
-    //@ForeignCollectionField
-    //private Collection<Convidado> convidados;
     @ForeignCollectionField
     private Collection<Convidado> convidados;
-
-
 
     public Casamento(){}
 
@@ -136,6 +132,11 @@ public class Casamento {
 
     @Override
     public String toString() {
+        String con = "";
+
+        for(Convidado c : this.convidados){
+            con += c.toString() +", ";
+        }
         return "Casamento{" +
                 "id=" + id +
                 ", noiva='" + noiva + '\'' +
@@ -145,7 +146,7 @@ public class Casamento {
                 ", ano=" + ano +
                 ", cidade='" + cidade + '\'' +
                 ", local='" + local + '\'' +
-                ", convidados=" + convidados +
+                ", convidados=" + con +
                 '}';
     }
 

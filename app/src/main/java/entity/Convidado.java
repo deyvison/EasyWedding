@@ -60,9 +60,4 @@ public class Convidado {
     public void setId(int id) {
         this.id = id;
     }
-
-   // public void addCasamento(Casamento c){
-   //     this.casamento.add(c);
-   // }
-
 }

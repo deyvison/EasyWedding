@@ -87,7 +87,6 @@ public class DB {
 
 
     public void insertUsuario(Usuario usuario) throws SQLException {
-        Log.i("ayty",(usuarioDAO==null)+ "? não pode dar true" );
         usuarioDAO.create(usuario);//INSERT
     }
     public void updateUsuario(Usuario usuario) throws SQLException {
