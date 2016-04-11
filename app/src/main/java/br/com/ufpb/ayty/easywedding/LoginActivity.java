@@ -3,9 +3,11 @@ package br.com.ufpb.ayty.easywedding;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,25 +21,57 @@ import entity.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextView textView;
+    DB db;
+    TextView novoCadastro;
+    Button botaoEntrar;
+    EditText campoLogin;
+    EditText campoSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        textView = (TextView) findViewById(R.id.textView);
+        novoCadastro = (TextView) findViewById(R.id.novoCadastro);
+        botaoEntrar = (Button) findViewById(R.id.botaoEntrar);
+        campoLogin = (EditText) findViewById(R.id.campoLoginEntrar);
+        campoSenha = (EditText) findViewById(R.id.campoSenhaEntrar);
 
-        DB db = DB.getInstance(this);
+        db = DB.getInstance(this);
 
-        textView.setOnClickListener(new View.OnClickListener() {
+        novoCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(),CadastroActivity.class);
                 startActivity(i);
 
-                //Toast.makeText(getApplicationContext(),"teste lol",Toast.LENGTH_SHORT).show();
+            }
+        });
 
+        botaoEntrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(validarCampos(campoLogin, campoSenha)){
+                    try {
+                        List<Usuario> users = db.selectUsuarioByLogin(campoLogin.getText().toString());
+                        if(users.size() == 0){
+                            Toast.makeText(v.getContext(),"Usuário não cadastrado!",Toast.LENGTH_SHORT).show();;
+                        }else{
+                            boolean logado = false;
+
+                            for(Usuario user : users){
+                                if(user.getLogin().equals(campoLogin.getText().toString()) && user.getSenha().equals(campoSenha.getText().toString())){
+                                    Toast.makeText(v.getContext(),"Usuário logado com sucesso!", Toast.LENGTH_SHORT).show();
+                                    // criar a intent para a main activity
+                                }else{
+                                    Toast.makeText(v.getContext(),"Usuário ou senha inválidos!",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
         /**
@@ -77,8 +111,7 @@ public class LoginActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             Log.e("ayty",e.getMessage());
-        }
-
+        }*/
         try {
             List<Usuario> retorno = db.selectUsuario();
             for(Usuario u : retorno){
@@ -86,6 +119,34 @@ public class LoginActivity extends AppCompatActivity {
             }
         } catch (SQLException e) {
             Log.e("ayty", e.getMessage());
-        }*/
+        }
+    }
+
+    private boolean validarCampos(EditText campoLogin, EditText campoSenha) {
+        View focus = null;
+        boolean valido = true;
+
+        if(TextUtils.isEmpty(campoLogin.getText().toString())){
+            campoLogin.setError("Campo vazio!");
+            focus = campoLogin;
+            valido = false;
+            focus.requestFocus();
+        }
+
+        if(TextUtils.isEmpty(campoSenha.getText().toString())){
+            campoSenha.setError("Campo vazio!");
+            focus = campoSenha;
+            valido = false;
+            focus.requestFocus();
+        }
+        if(!TextUtils.isEmpty(campoSenha.getText().toString()) && campoSenha.getText().toString().length() < 5){
+            campoSenha.setError("A senha deve conter no mínimo 5 dígitos!");
+            focus = campoSenha;
+            valido = false;
+            focus.requestFocus();
+        }
+
+
+        return valido;
     }
 }

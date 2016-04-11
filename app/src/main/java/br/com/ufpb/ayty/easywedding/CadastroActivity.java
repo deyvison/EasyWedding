@@ -27,7 +27,7 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         botaoCadastrar = (Button)findViewById(R.id.botaoCadastro);
-        
+
         db = DB.getInstance(this);
 
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +66,7 @@ public class CadastroActivity extends AppCompatActivity {
                     user.setCasamento(c);
                     db.insertUsuario(user);
                     Toast.makeText(this, "Usuário Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                    // criar a intent para o main activity
                 } else {
                     Toast.makeText(this,"Usuário já existe!",Toast.LENGTH_SHORT).show();
                     Log.i("ayty", "usuário já existeeeee!");
