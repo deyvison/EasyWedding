@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
+        /**
         try {
             //criação de casamento
             Casamento c = new Casamento("Jose","Leticia");
@@ -86,6 +86,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         } catch (SQLException e) {
             Log.e("ayty", e.getMessage());
-        }
+        }*/
     }
 }

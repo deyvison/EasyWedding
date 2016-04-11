@@ -12,11 +12,12 @@
     tools:context="br.com.ufpb.ayty.easywedding.CadastroActivity">
 
     <ImageView
+        android:paddingTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/cadastrese"/>
+        android:src="@drawable/cadastrar3"/>
 
     <TextView
         android:paddingTop="20dp"
@@ -33,7 +34,7 @@
         android:inputType="textPersonName"
         android:text=""
         android:ems="10"
-        android:id="@+id/editText3"
+        android:id="@+id/campoLogin"
         android:layout_gravity="center_horizontal" />
 
     <TextView
@@ -51,7 +52,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText4"
+        android:id="@+id/campoSenha"
         android:layout_gravity="center_horizontal" />
 
     <TextView
@@ -70,7 +71,7 @@
         android:inputType="textPersonName"
         android:text=""
         android:ems="10"
-        android:id="@+id/editText5"
+        android:id="@+id/campoNoiva"
         android:layout_gravity="center_horizontal" />
 
     <TextView
@@ -90,7 +91,7 @@
         android:inputType="textPersonName"
         android:text=""
         android:ems="10"
-        android:id="@+id/editText6"
+        android:id="@+id/campoNoivo"
         android:layout_gravity="center_horizontal" />
 
     <Button
@@ -99,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cadastrar"
-        android:id="@+id/button2"
+        android:id="@+id/botaoCadastro"
         android:layout_gravity="center_horizontal" />
 
 
