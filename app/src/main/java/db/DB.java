@@ -22,13 +22,24 @@ import entity.Usuario;
  * Created by Deyvison on 08/04/2016.
  */
 public class DB {
+
+    private static DB singleton;
+
     private CasamentoDAO casamentoDAO;
     private ConvidadoDAO convidadoDAO;
     private UsuarioDAO usuarioDAO;
 
     private Helper helper;
 
-    public DB(Context context){
+    public static DB getInstance(Context context) {
+
+        if(singleton == null){
+            singleton = new DB(context);
+        }
+        return singleton;
+    }
+
+    private DB(Context context){
         helper = new Helper(context);
         try {
             casamentoDAO = new CasamentoDAO(helper.getConnectionSource());

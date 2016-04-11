@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.textView);
 
-        DB db = new DB(this);
+        DB db = DB.getInstance(this);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override

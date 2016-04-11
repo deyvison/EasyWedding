@@ -27,7 +27,8 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         botaoCadastrar = (Button)findViewById(R.id.botaoCadastro);
-        db = new DB(this);
+        
+        db = DB.getInstance(this);
 
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
