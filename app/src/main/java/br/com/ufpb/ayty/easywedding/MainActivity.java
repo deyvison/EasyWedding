@@ -1,18 +1,23 @@
 package br.com.ufpb.ayty.easywedding;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -41,10 +46,60 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 IconMenu retorno = adapter.getItem(position);
                 Toast.makeText(view.getContext(),"Item selecionado: "+retorno.getNome(),Toast.LENGTH_SHORT).show();
                 adapter.notifyDataSetChanged();
+
+                //
+                //alert dialog com os dados e opcoes
+                new AlertDialog.Builder(view.getContext())
+                        .setTitle("Nome da Noiva")
+                        .setMessage("Ana Paula Almeida")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // faz nada
+                            }
+                        })
+                        .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // inflar a view para editar
+
+
+                                // inflanndo o text_input.xml
+                                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                                builder.setTitle("Title");
+                                View viewInflated = LayoutInflater.from(view.getContext()).inflate(R.layout.text_input, (ViewGroup) view, false);
+                                final EditText input = (EditText) viewInflated.findViewById(R.id.input);
+                                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                                builder.setView(viewInflated);
+
+                                // Set up the buttons
+                                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                        String m_Text = input.getText().toString();
+                                        Toast.makeText(view.getContext(),m_Text,Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                                builder.show();
+
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .show();
+
+
+
+
             }
         });
 
@@ -80,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         //    Toast.makeText(MainActivity.this, "Voltei", Toast.LENGTH_SHORT).show();
         //}
         if(id == R.id.action_sair){
-            Toast.makeText(MainActivity.this, "Saindo conta", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Saindo da conta", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this,LoginActivity.class));
             finish();
         }

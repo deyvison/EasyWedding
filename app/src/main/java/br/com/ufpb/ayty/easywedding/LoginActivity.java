@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent i = new Intent(v.getContext(),CadastroActivity.class);
                 startActivity(i);
 
+
             }
         });
 
@@ -67,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     // criar o bundle para passar as informações
                                     startActivity(i);
+                                    finish();
                                 }else{
                                     Toast.makeText(v.getContext(),"Usuário ou senha inválidos!",Toast.LENGTH_SHORT).show();
                                 }

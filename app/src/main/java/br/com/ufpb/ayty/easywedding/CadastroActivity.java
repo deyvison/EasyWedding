@@ -68,6 +68,7 @@ public class CadastroActivity extends AppCompatActivity {
                     // criar a intent para o main activity
                     Intent i = new Intent(this, MainActivity.class);
                     startActivity(i);
+
                     finish();
                 } else {
                     Toast.makeText(this,"Usuário já existe!",Toast.LENGTH_SHORT).show();
