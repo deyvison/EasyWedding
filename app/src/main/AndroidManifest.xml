@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
+        android:name="application.CasamentoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/pinkrings"
         android:label="@string/app_name"
