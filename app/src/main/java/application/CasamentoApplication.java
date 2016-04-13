@@ -88,9 +88,8 @@ public class CasamentoApplication extends Application {
         this.convidados = convidados;
     }
 
-    public void addConvidado(){
-
-        convidados.add(new Convidado("Default!"));
+    public void addConvidado(Convidado c){
+        convidados.add(c);
     }
 
     public void removerConvidado(int idx){
