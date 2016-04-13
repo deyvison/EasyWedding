@@ -8,13 +8,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <AutoCompleteTextView
-            android:id="@+id/input"
+
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/action_sign_in"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword" />
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=""
+                android:imeOptions="actionDone"
+                android:inputType="textPersonName" />
+        </android.support.design.widget.TextInputLayout>
 
     </android.support.design.widget.TextInputLayout>
 </FrameLayout>

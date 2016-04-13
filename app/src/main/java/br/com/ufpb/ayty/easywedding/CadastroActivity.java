@@ -67,6 +67,10 @@ public class CadastroActivity extends AppCompatActivity {
                     Toast.makeText(this, "Usuário Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
                     // criar a intent para o main activity
                     Intent i = new Intent(this, MainActivity.class);
+                    Bundle b = new Bundle();
+
+                    b.putString("login",user.getLogin());
+                    i.putExtras(b);
                     startActivity(i);
 
                     finish();

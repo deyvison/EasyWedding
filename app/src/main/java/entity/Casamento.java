@@ -52,7 +52,14 @@ public class Casamento {
         this.noivo = noivo;
         this.convidados = new ArrayList<Convidado>();
         this.usuario = new ArrayList<Usuario>();
+        this.dia = 00;
+        this.mes = 00;
+        this.ano = 00;
+        this.cidade = "Sem cidade definida";
+        this.local= "Sem local definido";
     }
+
+
 
     public int getId() {
         return id;

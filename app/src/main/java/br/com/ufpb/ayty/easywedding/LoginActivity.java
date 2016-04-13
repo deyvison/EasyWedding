@@ -65,7 +65,9 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(v.getContext(),"Usuário logado com sucesso!", Toast.LENGTH_SHORT).show();
                                     // criar a intent para a main activity
                                     Intent i = new Intent(v.getContext(),MainActivity.class);
-
+                                    Bundle b = new Bundle();
+                                    b.putString("login",user.getLogin());
+                                    i.putExtras(b);
                                     // criar o bundle para passar as informações
                                     startActivity(i);
                                     finish();

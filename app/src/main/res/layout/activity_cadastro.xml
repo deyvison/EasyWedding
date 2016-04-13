@@ -12,91 +12,80 @@
     tools:context="br.com.ufpb.ayty.easywedding.CadastroActivity">
 
     <ImageView
-        android:paddingTop="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:paddingTop="10dp"
         android:id="@+id/imageView2"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/cadastrese"/>
+        android:src="@drawable/newaccount"/>
 
-    <TextView
-        android:paddingTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/textviewLogin"
-        android:textSize="25dp"/>
-
-    <EditText
-        android:hint="Nome de usuário"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text=""
-        android:ems="10"
-        android:id="@+id/campoLogin"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:paddingTop="10dp"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Senha"
-        android:id="@+id/textView3"
-        android:layout_gravity="center_horizontal" />
+        <EditText
+            android:paddingTop="15dp"
+            android:hint="Nome de usuário"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/campoLogin"
+            android:layout_gravity="center_horizontal" />
 
-    <EditText
-        android:hint="Senha de usuário"
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/campoSenha"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:paddingTop="10dp"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nome da Noiva"
-        android:id="@+id/textView4"
-        android:layout_gravity="center_horizontal" />
+        <EditText
+            android:hint="Senha de usuário"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/campoSenha"
+            android:layout_gravity="center_horizontal" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:hint="Nome completo"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text=""
-        android:ems="10"
-        android:id="@+id/campoNoiva"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:paddingTop="10dp"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nome do Noivo"
-        android:id="@+id/textView5"
-        android:layout_gravity="center_horizontal" />
+        <EditText
+            android:hint="Nome da noiva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:ems="10"
+            android:id="@+id/campoNoiva"
+            android:layout_gravity="center_horizontal" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:hint="Nome completo"
-        android:paddingTop="10dp"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text=""
-        android:ems="10"
-        android:id="@+id/campoNoivo"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:hint="Nome do noivo"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:ems="10"
+            android:id="@+id/campoNoivo"
+            android:layout_gravity="center_horizontal" />
+
+    </android.support.design.widget.TextInputLayout>
+
 
     <Button
-        android:paddingTop="10dp"
-        android:textSize="20dp"
+        android:layout_marginTop="15dp"
+
+        android:textSize="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cadastrar"
