@@ -177,9 +177,113 @@ public class MainActivity extends AppCompatActivity {
                 }else if(item.equals("Convidados")){
                     Toast.makeText(view.getContext(),"Entrou em convidados!",Toast.LENGTH_SHORT).show();
                 }else if(item.equals("Cidade")){
-                    Toast.makeText(view.getContext(),"Entrou em cidades!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "Entrou em cidades!", Toast.LENGTH_SHORT).show();
+
+                    new AlertDialog.Builder(view.getContext())
+                            .setTitle("Cidade do casamento")
+                            .setMessage(user.getCasamento().getCidade())
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // faz nada
+                                }
+                            })
+                            .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // inflar o input_text.xml
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                                    builder.setTitle("Cidade do casamento");
+                                    View viewInflated = LayoutInflater.from(view.getContext()).inflate(R.layout.text_input, (ViewGroup) view, false);
+                                    final EditText input = (EditText) viewInflated.findViewById(R.id.input);
+                                    input.setHint("Editar cidade do casamento");
+                                    input.setText(user.getCasamento().getCidade());
+                                    builder.setView(viewInflated);
+
+                                    builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                            String novoNome = input.getText().toString();
+                                            Toast.makeText(view.getContext(), novoNome, Toast.LENGTH_SHORT).show();
+                                            // dar update no banco
+
+                                            user.getCasamento().setCidade(novoNome);
+                                            try {
+                                                db.updateCasamento(user.getCasamento());
+                                                db.updateUsuario(user);
+                                                List<Usuario> users = db.selectUsuarioByLogin(bundle.getString("login"));
+                                                user = users.get(0);
+                                                Log.i("ayty","cidade do casamento deve estar mudada: "+user.getCasamento().getCidade());
+                                            } catch (SQLException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+                                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+
+                                    builder.show();
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_menu_edit).show();
+
                 }else if(item.equals("Local")){
                     Toast.makeText(view.getContext(),"Entrou em local!",Toast.LENGTH_SHORT).show();
+
+                    new AlertDialog.Builder(view.getContext())
+                            .setTitle("Local do casamento")
+                            .setMessage(user.getCasamento().getLocal())
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // faz nada
+                                }
+                            })
+                            .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // inflar o input_text.xml
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                                    builder.setTitle("Local do casamento");
+                                    View viewInflated = LayoutInflater.from(view.getContext()).inflate(R.layout.text_input, (ViewGroup) view, false);
+                                    final EditText input = (EditText) viewInflated.findViewById(R.id.input);
+                                    input.setHint("Editar local do casamento");
+                                    input.setText(user.getCasamento().getLocal());
+                                    builder.setView(viewInflated);
+
+                                    builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                            String novoNome = input.getText().toString();
+                                            Toast.makeText(view.getContext(), novoNome, Toast.LENGTH_SHORT).show();
+                                            // dar update no banco
+
+                                            user.getCasamento().setLocal(novoNome);
+                                            try {
+                                                db.updateCasamento(user.getCasamento());
+                                                db.updateUsuario(user);
+                                                List<Usuario> users = db.selectUsuarioByLogin(bundle.getString("login"));
+                                                user = users.get(0);
+                                                Log.i("ayty","local do casamento deve estar mudado: "+user.getCasamento().getLocal());
+                                            } catch (SQLException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+                                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+
+                                    builder.show();
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_menu_edit).show();
+
                 }
                 //alert dialog com os dados e opcoes
 
