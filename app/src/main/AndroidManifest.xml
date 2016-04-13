@@ -26,7 +26,11 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme" />
-        <activity android:name=".CadastroActivity"></activity>
+        <activity android:name=".CadastroActivity" />
+        <activity
+            android:name=".ConvidadosActivity"
+            android:label="@string/title_activity_convidados"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

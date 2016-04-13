@@ -175,7 +175,11 @@ public class MainActivity extends AppCompatActivity {
                 }else if(item.equals("Data")){
                     Toast.makeText(view.getContext(),"Entrou na data!",Toast.LENGTH_SHORT).show();
                 }else if(item.equals("Convidados")){
+                    // ir para i layout convidados
                     Toast.makeText(view.getContext(),"Entrou em convidados!",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(view.getContext(),ConvidadosActivity.class);
+                    i.putExtras(bundle);
+                    startActivity(i);
                 }else if(item.equals("Cidade")){
                     Toast.makeText(view.getContext(), "Entrou em cidades!", Toast.LENGTH_SHORT).show();
 
