@@ -117,11 +117,61 @@ public class MainActivity extends AppCompatActivity {
                                     builder.show();
                                 }
                             })
-                            .setIcon(android.R.drawable.ic_dialog_info)
-                            .show();
+                            .setIcon(android.R.drawable.ic_menu_edit).show();
 
                 }else if(item.equals("Noivo")){
                     Toast.makeText(view.getContext(),"Entrou no noivo!",Toast.LENGTH_SHORT).show();
+
+                    new AlertDialog.Builder(view.getContext())
+                            .setTitle("Nome do noivo")
+                            .setMessage(user.getCasamento().getNoivo())
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // faz nada
+                                }
+                            })
+                            .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // inflar o input_text.xml
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                                    builder.setTitle("Noivo");
+                                    View viewInflated = LayoutInflater.from(view.getContext()).inflate(R.layout.text_input, (ViewGroup) view, false);
+                                    final EditText input = (EditText) viewInflated.findViewById(R.id.input);
+                                    input.setHint("Editar nome do noivo");
+                                    input.setText(user.getCasamento().getNoivo());
+                                    builder.setView(viewInflated);
+
+                                    builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                            String novoNome = input.getText().toString();
+                                            Toast.makeText(view.getContext(), novoNome, Toast.LENGTH_SHORT).show();
+                                            // dar update no banco
+
+                                            user.getCasamento().setNoivo(novoNome);
+                                            try {
+                                                db.updateCasamento(user.getCasamento());
+                                                db.updateUsuario(user);
+                                                List<Usuario> users = db.selectUsuarioByLogin(bundle.getString("login"));
+                                                user = users.get(0);
+                                                Log.i("ayty","nome do noivo deve estar mudado: "+user.getCasamento().getNoivo());
+                                            } catch (SQLException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+                                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+
+                                    builder.show();
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_menu_edit).show();
                 }else if(item.equals("Data")){
                     Toast.makeText(view.getContext(),"Entrou na data!",Toast.LENGTH_SHORT).show();
                 }else if(item.equals("Convidados")){
