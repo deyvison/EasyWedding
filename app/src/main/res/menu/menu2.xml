@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
-        android:title="Sair"
-        android:id="@+id/action_sair"
+
+        android:id="@+id/info"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:title=""
+        android:icon="@drawable/info"
+        android:orderInCategory="100"
         app:showAsAction="ifRoom" />
+
+        />
 
 </menu>

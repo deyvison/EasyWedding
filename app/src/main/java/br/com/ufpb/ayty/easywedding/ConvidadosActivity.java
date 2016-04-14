@@ -121,11 +121,19 @@ public class ConvidadosActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu2, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+
+        if(id == R.id.info){
+            Toast.makeText(this,"Convidados cadastrados: "+application.getConvidados().size(),Toast.LENGTH_SHORT).show();
+        }
         if(id == android.R.id.home){
 
             Toast.makeText(this,"Voltei", Toast.LENGTH_SHORT).show();
