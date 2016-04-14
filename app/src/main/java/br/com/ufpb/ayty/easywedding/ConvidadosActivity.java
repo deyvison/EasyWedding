@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import adapter.ConvidadosAdapter;
@@ -32,7 +34,8 @@ public class ConvidadosActivity extends AppCompatActivity {
     private ListView listView;
     private ConvidadosAdapter adapter;
     private CasamentoApplication application;
-
+    private Bundle bundle;
+    private DB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +44,28 @@ public class ConvidadosActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setTitle("Lista de convidados");
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        db = DB.getInstance(this);
+        bundle = getIntent().getExtras();
+        String login = bundle.getString("login");
+        Usuario user = null;
+        try {
+            user = db.selectUsuarioByLogin(login).get(0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         application = (CasamentoApplication) getApplicationContext();
+        application.setUser(user);
+        application.setConvidados(new ArrayList<Convidado>());
+        application.criarConvidados();
+
         adapter = new ConvidadosAdapter(this);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);

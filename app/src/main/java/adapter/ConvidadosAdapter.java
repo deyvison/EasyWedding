@@ -29,6 +29,14 @@ public class ConvidadosAdapter extends BaseAdapter {
         this.convidados = application.getConvidados();
     }
 
+    public List<Convidado> getConvidados() {
+        return convidados;
+    }
+
+    public void setConvidados(List<Convidado> convidados) {
+        this.convidados = convidados;
+    }
+
     @Override
     public int getCount() {
         return convidados.size();

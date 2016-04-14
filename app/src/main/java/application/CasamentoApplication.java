@@ -1,6 +1,7 @@
 package application;
 
 import android.app.Application;
+import android.util.Log;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,16 +20,18 @@ public class CasamentoApplication extends Application {
 
     private List<IconMenu> icones;
     private List<Convidado> convidados;
+    private Usuario user;
 
-
+    private DB db;
     @Override
     public void onCreate() {
         super.onCreate();
+        db = DB.getInstance(this);
         icones = new ArrayList<>();
         convidados = new ArrayList<>();
 
         criarIcones();
-        criarConvidados();
+        //criarConvidados();
 
     }
 
@@ -54,19 +57,23 @@ public class CasamentoApplication extends Application {
         return icones;
     }
 
-    private void criarConvidados() {
-        convidados.add(new Convidado("DeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvisonDeyvison"));
-        convidados.add(new Convidado("Ana Paula"));
-        convidados.add(new Convidado("Rivanildo"));
-        convidados.add(new Convidado("Rháleff"));
-        convidados.add(new Convidado("Luana"));
-        convidados.add(new Convidado("Junior"));
-        convidados.add(new Convidado("Danila"));
-        convidados.add(new Convidado("Emerson"));
-        convidados.add(new Convidado("Romario"));
-        convidados.add(new Convidado("Bebeto"));
-        convidados.add(new Convidado("Ronaldo"));
-        convidados.add(new Convidado("Cafu"));
+    public void criarConvidados() {
+        if(user != null){
+            for(Convidado c : user.getCasamento().getConvidados()){
+                this.convidados.add(c);
+            }
+        }
+//        convidados.add(new Convidado("Ana Paula"));
+//        convidados.add(new Convidado("Rivanildo"));
+//        convidados.add(new Convidado("Rháleff"));
+//        convidados.add(new Convidado("Luana"));
+//        convidados.add(new Convidado("Junior"));
+//        convidados.add(new Convidado("Danila"));
+//        convidados.add(new Convidado("Emerson"));
+//        convidados.add(new Convidado("Romario"));
+//        convidados.add(new Convidado("Bebeto"));
+//        convidados.add(new Convidado("Ronaldo"));
+//        convidados.add(new Convidado("Cafu"));
     }
 
 //    private void criarConvidados(String login) {
@@ -90,9 +97,50 @@ public class CasamentoApplication extends Application {
 
     public void addConvidado(Convidado c){
         convidados.add(c);
+
+        c.setCasamento(user.getCasamento());
+        user.getCasamento().addConvidado(c);
+
+        try {
+            //db.insertConvidado(c);
+            db.updateCasamento(user.getCasamento());
+           //
+            db.updateUsuario(user);
+           // this.convidados.clear();
+
+
+            List<Usuario> retorno = db.selectUsuarioByLogin(user.getLogin());
+//            for(Convidado c1 : retorno.get(0).getCasamento().getConvidados()){
+  //              convidados.add(c1);
+    //        }
+
+            Log.i("ayty","tamanho de convidados no casamento aplication: "+this.convidados.size());
+            Log.i("ayty","Adicionou? : "+retorno.get(0).toString());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void removerConvidado(int idx){
+        Convidado remover = convidados.get(idx);
+
         convidados.remove(idx);
+        user.getCasamento().setConvidados(this.convidados);
+
+        try {
+            db.deleteConvidado(remover);
+            db.updateCasamento(user.getCasamento());
+            db.updateUsuario(user);
+            List<Usuario> retorno = db.selectUsuarioByLogin(user.getLogin());
+            Log.i("ayty", "Removeu?: " + retorno.get(0).toString());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 }
