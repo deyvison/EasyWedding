@@ -1,5 +1,7 @@
 package br.com.ufpb.ayty.easywedding;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +16,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 
 import adapter.CasamentoAdapter;
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private DB db;
     private Bundle bundle;
     private Usuario user;
+
+    static final int DATE_DIALOG_ID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,6 +180,8 @@ public class MainActivity extends AppCompatActivity {
                             .setIcon(android.R.drawable.ic_menu_edit).show();
                 }else if(item.equals("Data")){
                     Toast.makeText(view.getContext(),"Entrou na data!",Toast.LENGTH_SHORT).show();
+                    showDialog(DATE_DIALOG_ID);
+
                 }else if(item.equals("Convidados")){
                     // ir para i layout convidados
                     Toast.makeText(view.getContext(),"Entrou em convidados!",Toast.LENGTH_SHORT).show();
@@ -337,8 +345,60 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void showAlertDialog(IconMenu selecionado, View view){
+//    void showAlertDialog(IconMenu selecionado, View view){}
 
 
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        Calendar calendario = Calendar.getInstance();
+        int ano, mes, dia;
+
+        int diau = user.getCasamento().getDia();
+        int mesu = user.getCasamento().getMes();
+        int anou = user.getCasamento().getAno();
+
+        if(diau == 0 && mesu == 0 && anou == 0){
+            ano = calendario.get(Calendar.YEAR);
+            mes = calendario.get(Calendar.MONTH);
+            dia = calendario.get(Calendar.DAY_OF_MONTH);
+        }else{
+            ano = anou;
+            mes = mesu-1;
+            dia = diau;
+        }
+
+        // passar as datas que estao salvas no banco
+        switch (id) {
+            case DATE_DIALOG_ID:
+                return new DatePickerDialog(this, mDateSetListener, ano, mes,
+                        dia);
+        }
+        return null;
     }
+
+    private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            int dia = dayOfMonth;
+            int mes = monthOfYear;
+            int ano = year;
+
+            user.getCasamento().setDia(dia);
+            user.getCasamento().setMes(mes+1);
+            user.getCasamento().setAno(ano);
+
+            try {
+                db.updateCasamento(user.getCasamento());
+                db.updateUsuario(user);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            String data = String.valueOf(dayOfMonth) + " /"
+                    + String.valueOf(monthOfYear+1) + " /" + String.valueOf(year);
+            Toast.makeText(MainActivity.this,
+                    "DATA = " + data, Toast.LENGTH_SHORT)
+                    .show();
+        }
+    };
 }
