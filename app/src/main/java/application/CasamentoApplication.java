@@ -96,6 +96,7 @@ public class CasamentoApplication extends Application {
     }
 
     public void addConvidado(Convidado c){
+
         convidados.add(c);
 
         c.setCasamento(user.getCasamento());
@@ -103,7 +104,7 @@ public class CasamentoApplication extends Application {
 
         try {
             //db.insertConvidado(c);
-            db.updateCasamento(user.getCasamento());
+            //db.updateCasamento(user.getCasamento());
            //
             db.updateUsuario(user);
            // this.convidados.clear();
@@ -122,22 +123,23 @@ public class CasamentoApplication extends Application {
 
     }
 
-    public void removerConvidado(int idx){
+    public void removerConvidado(int idx){ // bug está em remover
+
         Convidado remover = convidados.get(idx);
 
         convidados.remove(idx);
-        user.getCasamento().setConvidados(this.convidados);
+        user.getCasamento().getConvidados().remove(remover);
 
         try {
             db.deleteConvidado(remover);
             db.updateCasamento(user.getCasamento());
             db.updateUsuario(user);
             List<Usuario> retorno = db.selectUsuarioByLogin(user.getLogin());
+            Log.i("ayty","tamanho de convidados no casamento aplication: "+this.convidados.size());
             Log.i("ayty", "Removeu?: " + retorno.get(0).toString());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void setUser(Usuario user) {

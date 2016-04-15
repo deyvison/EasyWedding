@@ -64,9 +64,11 @@ public class ConvidadosActivity extends AppCompatActivity {
         application = (CasamentoApplication) getApplicationContext();
         application.setUser(user);
         application.setConvidados(new ArrayList<Convidado>());
+
         application.criarConvidados();
 
         adapter = new ConvidadosAdapter(this);
+
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -132,7 +134,7 @@ public class ConvidadosActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.info){
-            Toast.makeText(this,"Convidados cadastrados: "+application.getConvidados().size(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Convidados cadastrados: "+(application.getConvidados().size()),Toast.LENGTH_SHORT).show();
         }
         if(id == android.R.id.home){
 
