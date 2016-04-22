@@ -11,86 +11,104 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.ufpb.ayty.easywedding.CadastroActivity">
 
-    <ImageView
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:paddingTop="10dp"
-        android:id="@+id/imageView2"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/newaccount"/>
 
-    <android.support.design.widget.TextInputLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:paddingTop="15dp"
-            android:hint="Nome de usuário"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/campoLogin"
-            android:layout_gravity="center_horizontal" />
+            android:layout_height="match_parent">
 
-    </android.support.design.widget.TextInputLayout>
+            <ImageView
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:paddingTop="10dp"
+                android:id="@+id/imageView2"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/newaccount"/>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <EditText
-            android:hint="Senha de usuário"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/campoSenha"
-            android:layout_gravity="center_horizontal" />
-    </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:paddingTop="15dp"
+                    android:hint="Nome de usuário"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/campoLogin"
+                    android:layout_gravity="center_horizontal" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:hint="Nome da noiva"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text=""
-            android:ems="10"
-            android:id="@+id/campoNoiva"
-            android:layout_gravity="center_horizontal" />
-    </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <EditText
+                    android:hint="Senha de usuário"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/campoSenha"
+                    android:layout_gravity="center_horizontal" />
+            </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:hint="Nome do noivo"
-            android:paddingTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text=""
-            android:ems="10"
-            android:id="@+id/campoNoivo"
-            android:layout_gravity="center_horizontal" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:hint="Nome da noiva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    android:ems="10"
+                    android:id="@+id/campoNoiva"
+                    android:layout_gravity="center_horizontal" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:hint="Nome do noivo"
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    android:ems="10"
+                    android:id="@+id/campoNoivo"
+                    android:layout_gravity="center_horizontal" />
+
+            </android.support.design.widget.TextInputLayout>
 
 
-    <Button
-        android:layout_marginTop="15dp"
+            <Button
+                android:layout_marginTop="15dp"
 
-        android:textSize="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cadastrar"
-        android:id="@+id/botaoCadastro"
-        android:layout_gravity="center_horizontal" />
+                android:textSize="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cadastrar"
+                android:id="@+id/botaoCadastro"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
 
 
 </LinearLayout>

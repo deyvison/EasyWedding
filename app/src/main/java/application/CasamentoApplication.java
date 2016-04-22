@@ -2,6 +2,7 @@ package application;
 
 import android.app.Application;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -137,6 +138,7 @@ public class CasamentoApplication extends Application {
             List<Usuario> retorno = db.selectUsuarioByLogin(user.getLogin());
             Log.i("ayty","tamanho de convidados no casamento aplication: "+this.convidados.size());
             Log.i("ayty", "Removeu?: " + retorno.get(0).toString());
+            Toast.makeText(this, "Convidado removido!", Toast.LENGTH_SHORT).show();
         } catch (SQLException e) {
             e.printStackTrace();
         }

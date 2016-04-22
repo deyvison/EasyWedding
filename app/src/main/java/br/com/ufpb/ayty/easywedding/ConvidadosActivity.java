@@ -97,7 +97,7 @@ public class ConvidadosActivity extends AppCompatActivity {
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     String valor = editText.getText().toString();
-                                    Toast.makeText(view.getContext(), valor, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(view.getContext(), "Convidado adicionado!", Toast.LENGTH_SHORT).show();
                                     application.addConvidado(new Convidado(valor));
                                     adapter.notifyDataSetChanged();
                                 }
@@ -138,7 +138,6 @@ public class ConvidadosActivity extends AppCompatActivity {
         }
         if(id == android.R.id.home){
 
-            Toast.makeText(this,"Voltei", Toast.LENGTH_SHORT).show();
             finish();
         }
         return super.onOptionsItemSelected(item);

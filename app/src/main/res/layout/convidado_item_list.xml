@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:textSize="30dp"
+        android:textSize="26dp"
         android:id="@+id/convidadoCampo" />
 
 </LinearLayout>

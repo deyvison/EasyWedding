@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if(item.equals("Noiva")){
-                    Toast.makeText(view.getContext(), "Entrou na noiva!", Toast.LENGTH_SHORT).show();
 
                     new AlertDialog.Builder(view.getContext())
                             .setTitle("Nome da noiva")
@@ -98,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.dismiss();
                                             String novoNome = input.getText().toString();
-                                            Toast.makeText(view.getContext(), novoNome, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(view.getContext(), "Nome da noiva alterado!", Toast.LENGTH_SHORT).show();
                                             // dar update no banco
 
                                             user.getCasamento().setNoiva(novoNome);
@@ -126,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
                             .setIcon(android.R.drawable.ic_menu_edit).show();
 
                 }else if(item.equals("Noivo")){
-                    Toast.makeText(view.getContext(),"Entrou no noivo!",Toast.LENGTH_SHORT).show();
 
                     new AlertDialog.Builder(view.getContext())
                             .setTitle("Nome do noivo")
@@ -152,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.dismiss();
                                             String novoNome = input.getText().toString();
-                                            Toast.makeText(view.getContext(), novoNome, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(view.getContext(), "Nome do noivo alterado!", Toast.LENGTH_SHORT).show();
                                             // dar update no banco
 
                                             user.getCasamento().setNoivo(novoNome);
@@ -179,17 +177,14 @@ public class MainActivity extends AppCompatActivity {
                             })
                             .setIcon(android.R.drawable.ic_menu_edit).show();
                 }else if(item.equals("Data")){
-                    Toast.makeText(view.getContext(),"Entrou na data!",Toast.LENGTH_SHORT).show();
                     showDialog(DATE_DIALOG_ID);
 
                 }else if(item.equals("Convidados")){
                     // ir para i layout convidados
-                    Toast.makeText(view.getContext(),"Entrou em convidados!",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(view.getContext(),ConvidadosActivity.class);
                     i.putExtras(bundle);
                     startActivity(i);
                 }else if(item.equals("Cidade")){
-                    Toast.makeText(view.getContext(), "Entrou em cidades!", Toast.LENGTH_SHORT).show();
 
                     new AlertDialog.Builder(view.getContext())
                             .setTitle("Cidade do casamento")
@@ -215,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.dismiss();
                                             String novoNome = input.getText().toString();
-                                            Toast.makeText(view.getContext(), novoNome, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(view.getContext(), "Cidade alterada!", Toast.LENGTH_SHORT).show();
                                             // dar update no banco
 
                                             user.getCasamento().setCidade(novoNome);
@@ -243,7 +238,6 @@ public class MainActivity extends AppCompatActivity {
                             .setIcon(android.R.drawable.ic_menu_edit).show();
 
                 }else if(item.equals("Local")){
-                    Toast.makeText(view.getContext(),"Entrou em local!",Toast.LENGTH_SHORT).show();
 
                     new AlertDialog.Builder(view.getContext())
                             .setTitle("Local do casamento")
@@ -269,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.dismiss();
                                             String novoNome = input.getText().toString();
-                                            Toast.makeText(view.getContext(), novoNome, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(view.getContext(), "Local alterado!", Toast.LENGTH_SHORT).show();
                                             // dar update no banco
 
                                             user.getCasamento().setLocal(novoNome);
