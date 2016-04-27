@@ -112,19 +112,14 @@ public class CasamentoApplication extends Application {
 
 
             List<Usuario> retorno = db.selectUsuarioByLogin(user.getLogin());
-//            for(Convidado c1 : retorno.get(0).getCasamento().getConvidados()){
-  //              convidados.add(c1);
-    //        }
 
-            Log.i("ayty","tamanho de convidados no casamento aplication: "+this.convidados.size());
-            Log.i("ayty","Adicionou? : "+retorno.get(0).toString());
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
 
-    public void removerConvidado(int idx){ // bug está em remover
+    public void removerConvidado(int idx){
 
         Convidado remover = convidados.get(idx);
 
@@ -136,8 +131,6 @@ public class CasamentoApplication extends Application {
             db.updateCasamento(user.getCasamento());
             db.updateUsuario(user);
             List<Usuario> retorno = db.selectUsuarioByLogin(user.getLogin());
-            Log.i("ayty","tamanho de convidados no casamento aplication: "+this.convidados.size());
-            Log.i("ayty", "Removeu?: " + retorno.get(0).toString());
             Toast.makeText(this, "Convidado removido!", Toast.LENGTH_SHORT).show();
         } catch (SQLException e) {
             e.printStackTrace();
