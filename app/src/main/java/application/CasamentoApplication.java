@@ -32,8 +32,6 @@ public class CasamentoApplication extends Application {
         convidados = new ArrayList<>();
 
         criarIcones();
-        //criarConvidados();
-
     }
 
     private void criarIcones() {
@@ -75,25 +73,20 @@ public class CasamentoApplication extends Application {
     }
 
     public void addConvidado(Convidado c){
-
         convidados.add(c);
-
         c.setCasamento(user.getCasamento());
         user.getCasamento().addConvidado(c);
 
         try {
             db.updateUsuario(user);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void removerConvidado(int idx){
 
         Convidado remover = convidados.get(idx);
-
         convidados.remove(idx);
         user.getCasamento().getConvidados().remove(remover);
 

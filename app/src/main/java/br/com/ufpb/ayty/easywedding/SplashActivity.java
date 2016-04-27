@@ -17,8 +17,6 @@ public class SplashActivity extends AppCompatActivity implements Runnable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        //ocultarBarraDeNavegação();
-
         Handler handler = new Handler();
         handler.postDelayed(this, DELAY);
     }

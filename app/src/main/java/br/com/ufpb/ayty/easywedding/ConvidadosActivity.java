@@ -44,8 +44,6 @@ public class ConvidadosActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setTitle("Lista de convidados");
@@ -79,7 +77,6 @@ public class ConvidadosActivity extends AppCompatActivity {
             }
         });
 
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if (fab != null) {
             fab.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +89,6 @@ public class ConvidadosActivity extends AppCompatActivity {
                     alertDialogBuilder.setView(promptView);
 
                     final EditText editText = (EditText) promptView.findViewById(R.id.input);
-                    // setup a dialog window
                     alertDialogBuilder.setCancelable(false)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
@@ -109,15 +105,9 @@ public class ConvidadosActivity extends AppCompatActivity {
                                         }
                                     });
 
-                    // create an alert dialog
                     AlertDialog alert = alertDialogBuilder.create();
                     alert.setTitle("Nome do convidado");
                     alert.show();
-
-
-
-
-
                 }
             });
         }

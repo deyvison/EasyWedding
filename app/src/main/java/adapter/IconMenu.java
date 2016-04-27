@@ -17,15 +17,8 @@ public class IconMenu {
         return idImage;
     }
 
-    public void setIdImage(int idImage) {
-        this.idImage = idImage;
-    }
-
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 }

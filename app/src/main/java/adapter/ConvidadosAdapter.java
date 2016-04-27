@@ -22,19 +22,10 @@ public class ConvidadosAdapter extends BaseAdapter {
     List<Convidado> convidados;
     private CasamentoApplication application;
 
-
     public ConvidadosAdapter(Context context){
         this.context = context;
         this.application = (CasamentoApplication) context.getApplicationContext();
         this.convidados = application.getConvidados();
-    }
-
-    public List<Convidado> getConvidados() {
-        return convidados;
-    }
-
-    public void setConvidados(List<Convidado> convidados) {
-        this.convidados = convidados;
     }
 
     @Override
@@ -57,15 +48,10 @@ public class ConvidadosAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View view = null;
-
         view = LayoutInflater.from(context).inflate(R.layout.convidado_item_list, parent, false);
-
         Convidado c = convidados.get(position);
-
         TextView textView = (TextView) view.findViewById(R.id.convidadoCampo);
-
         textView.setText(c.getNome());
-
         return view;
     }
 }

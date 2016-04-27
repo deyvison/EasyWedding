@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +14,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import db.DB;
-import entity.Casamento;
-import entity.Convidado;
 import entity.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
@@ -44,8 +41,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(),CadastroActivity.class);
                 startActivity(i);
-
-
             }
         });
 
@@ -59,16 +54,13 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(v.getContext(),"Usuário não cadastrado!",Toast.LENGTH_SHORT).show();;
                         }else{
                             boolean logado = false;
-
                             for(Usuario user : users){
                                 if(user.getLogin().equals(campoLogin.getText().toString()) && user.getSenha().equals(campoSenha.getText().toString())){
                                     Toast.makeText(v.getContext(),"Usuário logado com sucesso!", Toast.LENGTH_SHORT).show();
-                                    // criar a intent para a main activity
                                     Intent i = new Intent(v.getContext(),MainActivity.class);
                                     Bundle b = new Bundle();
                                     b.putString("login",user.getLogin());
                                     i.putExtras(b);
-                                    // criar o bundle para passar as informações
                                     startActivity(i);
                                     finish();
                                 }else{
@@ -108,7 +100,6 @@ public class LoginActivity extends AppCompatActivity {
             valido = false;
             focus.requestFocus();
         }
-
 
         return valido;
     }

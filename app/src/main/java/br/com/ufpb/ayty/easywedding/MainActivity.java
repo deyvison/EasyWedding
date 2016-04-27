@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 IconMenu retorno = adapter.getItem(position);
                 adapter.notifyDataSetChanged();
-                // showAlertDialog(retorno, view);
 
                 String item = retorno.getNome();
                 try {
@@ -78,12 +77,10 @@ public class MainActivity extends AppCompatActivity {
                             .setMessage(user.getCasamento().getNoiva())
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // faz nada
                                 }
                             })
                             .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // inflar o input_text.xml
                                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                                     builder.setTitle("Noiva");
                                     View viewInflated = LayoutInflater.from(view.getContext()).inflate(R.layout.text_input, (ViewGroup) view, false);
@@ -98,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                                             dialog.dismiss();
                                             String novoNome = input.getText().toString();
                                             Toast.makeText(view.getContext(), "Nome da noiva alterado!", Toast.LENGTH_SHORT).show();
-                                            // dar update no banco
 
                                             user.getCasamento().setNoiva(novoNome);
                                             try {
@@ -130,12 +126,10 @@ public class MainActivity extends AppCompatActivity {
                             .setMessage(user.getCasamento().getNoivo())
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // faz nada
                                 }
                             })
                             .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // inflar o input_text.xml
                                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                                     builder.setTitle("Noivo");
                                     View viewInflated = LayoutInflater.from(view.getContext()).inflate(R.layout.text_input, (ViewGroup) view, false);
@@ -150,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
                                             dialog.dismiss();
                                             String novoNome = input.getText().toString();
                                             Toast.makeText(view.getContext(), "Nome do noivo alterado!", Toast.LENGTH_SHORT).show();
-                                            // dar update no banco
 
                                             user.getCasamento().setNoivo(novoNome);
                                             try {
@@ -178,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
                     showDialog(DATE_DIALOG_ID);
 
                 }else if(item.equals("Convidados")){
-                    // ir para i layout convidados
                     Intent i = new Intent(view.getContext(),ConvidadosActivity.class);
                     i.putExtras(bundle);
                     startActivity(i);
@@ -189,12 +181,10 @@ public class MainActivity extends AppCompatActivity {
                             .setMessage(user.getCasamento().getCidade())
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // faz nada
                                 }
                             })
                             .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // inflar o input_text.xml
                                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                                     builder.setTitle("Cidade do casamento");
                                     View viewInflated = LayoutInflater.from(view.getContext()).inflate(R.layout.text_input, (ViewGroup) view, false);
@@ -209,7 +199,6 @@ public class MainActivity extends AppCompatActivity {
                                             dialog.dismiss();
                                             String novoNome = input.getText().toString();
                                             Toast.makeText(view.getContext(), "Cidade alterada!", Toast.LENGTH_SHORT).show();
-                                            // dar update no banco
 
                                             user.getCasamento().setCidade(novoNome);
                                             try {
@@ -241,12 +230,10 @@ public class MainActivity extends AppCompatActivity {
                             .setMessage(user.getCasamento().getLocal())
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // faz nada
                                 }
                             })
                             .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // inflar o input_text.xml
                                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                                     builder.setTitle("Local do casamento");
                                     View viewInflated = LayoutInflater.from(view.getContext()).inflate(R.layout.text_input, (ViewGroup) view, false);
@@ -261,7 +248,6 @@ public class MainActivity extends AppCompatActivity {
                                             dialog.dismiss();
                                             String novoNome = input.getText().toString();
                                             Toast.makeText(view.getContext(), "Local alterado!", Toast.LENGTH_SHORT).show();
-                                            // dar update no banco
 
                                             user.getCasamento().setLocal(novoNome);
                                             try {
@@ -280,7 +266,6 @@ public class MainActivity extends AppCompatActivity {
                                             dialog.cancel();
                                         }
                                     });
-
                                     builder.show();
                                 }
                             })
@@ -333,8 +318,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (id) {
             case DATE_DIALOG_ID:
-                return new DatePickerDialog(this, mDateSetListener, ano, mes,
-                        dia);
+                return new DatePickerDialog(this, mDateSetListener, ano, mes, dia);
         }
         return null;
     }
