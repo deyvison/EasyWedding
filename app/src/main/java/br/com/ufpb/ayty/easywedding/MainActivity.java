@@ -106,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
                                                 db.updateUsuario(user);
                                                 List<Usuario> users = db.selectUsuarioByLogin(bundle.getString("login"));
                                                 user = users.get(0);
-                                                Log.i("ayty","nome da noiva deve estar mudado: "+user.getCasamento().getNoiva());
                                             } catch (SQLException e) {
                                                 e.printStackTrace();
                                             }
@@ -159,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
                                                 db.updateUsuario(user);
                                                 List<Usuario> users = db.selectUsuarioByLogin(bundle.getString("login"));
                                                 user = users.get(0);
-                                                Log.i("ayty","nome do noivo deve estar mudado: "+user.getCasamento().getNoivo());
                                             } catch (SQLException e) {
                                                 e.printStackTrace();
                                             }
@@ -219,7 +217,6 @@ public class MainActivity extends AppCompatActivity {
                                                 db.updateUsuario(user);
                                                 List<Usuario> users = db.selectUsuarioByLogin(bundle.getString("login"));
                                                 user = users.get(0);
-                                                Log.i("ayty","cidade do casamento deve estar mudada: "+user.getCasamento().getCidade());
                                             } catch (SQLException e) {
                                                 e.printStackTrace();
                                             }
@@ -272,7 +269,6 @@ public class MainActivity extends AppCompatActivity {
                                                 db.updateUsuario(user);
                                                 List<Usuario> users = db.selectUsuarioByLogin(bundle.getString("login"));
                                                 user = users.get(0);
-                                                Log.i("ayty","local do casamento deve estar mudado: "+user.getCasamento().getLocal());
                                             } catch (SQLException e) {
                                                 e.printStackTrace();
                                             }
