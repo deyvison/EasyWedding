@@ -64,29 +64,7 @@ public class CasamentoApplication extends Application {
                 this.convidados.add(c);
             }
         }
-//        convidados.add(new Convidado("Ana Paula"));
-//        convidados.add(new Convidado("Rivanildo"));
-//        convidados.add(new Convidado("Rháleff"));
-//        convidados.add(new Convidado("Luana"));
-//        convidados.add(new Convidado("Junior"));
-//        convidados.add(new Convidado("Danila"));
-//        convidados.add(new Convidado("Emerson"));
-//        convidados.add(new Convidado("Romario"));
-//        convidados.add(new Convidado("Bebeto"));
-//        convidados.add(new Convidado("Ronaldo"));
-//        convidados.add(new Convidado("Cafu"));
     }
-
-//    private void criarConvidados(String login) {
-//        try {
-//            List<Usuario> users = db.selectUsuarioByLogin(login);
-//            for(Convidado c : users.get(0).getCasamento().getConvidados()){
-//                this.convidados.add(c);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     public List<Convidado> getConvidados() {
         return convidados;
@@ -104,14 +82,7 @@ public class CasamentoApplication extends Application {
         user.getCasamento().addConvidado(c);
 
         try {
-            //db.insertConvidado(c);
-            //db.updateCasamento(user.getCasamento());
-           //
             db.updateUsuario(user);
-           // this.convidados.clear();
-
-
-            List<Usuario> retorno = db.selectUsuarioByLogin(user.getLogin());
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -130,7 +101,6 @@ public class CasamentoApplication extends Application {
             db.deleteConvidado(remover);
             db.updateCasamento(user.getCasamento());
             db.updateUsuario(user);
-            List<Usuario> retorno = db.selectUsuarioByLogin(user.getLogin());
             Toast.makeText(this, "Convidado removido!", Toast.LENGTH_SHORT).show();
         } catch (SQLException e) {
             e.printStackTrace();

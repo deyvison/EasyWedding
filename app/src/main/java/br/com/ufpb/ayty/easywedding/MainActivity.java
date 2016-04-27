@@ -289,34 +289,14 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             })
                             .setIcon(android.R.drawable.ic_menu_edit).show();
-
                 }
-                //alert dialog com os dados e opcoes
-
-
-
-
-
             }
         });
-
-      //  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setTitle("Menu Principal");
-            //actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
-
-
-       /** fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
     }
 
     @Override
@@ -328,9 +308,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        //if(id == android.R.id.home){
-        //    Toast.makeText(MainActivity.this, "Voltei", Toast.LENGTH_SHORT).show();
-        //}
         if(id == R.id.action_sair){
             Toast.makeText(MainActivity.this, "Saindo da conta", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this,LoginActivity.class));
@@ -338,9 +315,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-//    void showAlertDialog(IconMenu selecionado, View view){}
-
 
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -361,7 +335,6 @@ public class MainActivity extends AppCompatActivity {
             dia = diau;
         }
 
-        // passar as datas que estao salvas no banco
         switch (id) {
             case DATE_DIALOG_ID:
                 return new DatePickerDialog(this, mDateSetListener, ano, mes,
