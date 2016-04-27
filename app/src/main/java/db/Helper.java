@@ -19,7 +19,7 @@ import entity.Usuario;
 public class Helper extends OrmLiteSqliteOpenHelper {
 
     private static final String NOME = "ayty";
-    private static final int VERSAO = 4;
+    private static final int VERSAO = 5;
 
 
     public Helper(Context context) {
